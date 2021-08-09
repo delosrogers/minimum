@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Database
+neo4j/
+
 # C extensions
 *.so
 
@@ -184,3 +187,4 @@ template/config/
 
 # Exclude the config
 elmapp.config.js
+*.sqlite

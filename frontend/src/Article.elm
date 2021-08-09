@@ -1,6 +1,9 @@
+module Article exposing (..)=
+
 import Browser
 import Html exposing (Html, text, pre)
 import Http
+import Markdown
 
 
 
@@ -11,8 +14,7 @@ main =
   Browser.element
     { init = init
     , update = update
-    , subscriptions = subscriptions
-    , view = view
+    , subscriptions = subscriptions,  view = view
     }
 
 
@@ -30,7 +32,7 @@ init : () -> (Model, Cmd Msg)
 init _ =
   ( Loading
   , Http.get
-      { url = "https://elm-lang.org/assets/public-opinion.txt"
+      { url = "https://raw.githubusercontent.com/servo/servo/master/README.md"
       , expect = Http.expectString GotText
       }
   )
@@ -69,6 +71,7 @@ subscriptions model =
 -- VIEW
 
 
+
 view : Model -> Html Msg
 view model =
   case model of
@@ -79,4 +82,4 @@ view model =
       text "Loading..."
 
     Success fullText ->
-      pre [] [ text fullText ]
+      pre [] [ text fullText]
